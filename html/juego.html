@@ -1,26 +1,36 @@
+<!-- Edurne Presa Angulo - DWEC03 TE2 -->
+
 <!DOCTYPE html>
 <html lang="es">
     
 <head>
     <meta charset="utf-8"/>
+    <!------------- TITULO DE LA PAGINA ---------------------->
     <title>El juego del ahorcado</title>
+    <!------------- ESTILOS ---------------------------------->
     <link rel="stylesheet" href="../css/estilos.css">
-    
 </head>
 
 <body>
     <h1>El juego del ahorcado</h1>
+    
+    <!------------- TABLERO DE JUEGO -------------------------->
     <div id="tablero">
         
+        <!---------- DIBUJO - EL AHORCADO --------------------->
         <div id="figura">
             <img id ="dibujo" src="../images/vacio.png">
         </div>
 
+        <!---------- ZONA DE JUEGO ---------------------------->
         <div id="derecha">
+            <!---------- PALABRA OCULTA ----------------------->
             <div id="palabras">
                 <div class="pal"><p id="l1" class="oculta">_</p><p id="l2" class="oculta">_</p><p id="l3" class="oculta">_</p><p id="l4" class="oculta">_</p><p id="l5" class="oculta">_</p><p id="l6" class="oculta">_</p><p id="l7" class="oculta">_</p></div>
                 <div class="transp"><p class="l">_</p><p class="l">_</p><p class="l">_</p><p class="l">_</p><p class="l">_</p><p class="l">_</p><p class="l">_</p></div>
             </div>
+
+            <!---------- LETRAS A ADIVINAR -------------------->
             <div id="letras">
                 <p class="fila"><button id="a" class="letra">A</button><button id="b" class="letra">B</button><button id="c" class="letra">C</button><button id="d" class="letra">D</button><button id="e" class="letra">E</button><button id="f" class="letra">F</button><button id="g" class="letra">G</button></p>
                 <p class="fila"><button id="h" class="letra">H</button><button id="i" class="letra">I</button><button id="j" class="letra">J</button><button id="k" class="letra">K</button><button id="l" class="letra">L</button><button id="m" class="letra">M</button><button id="n" class="letra">N</button></p>
@@ -30,11 +40,13 @@
         </div>
     </div>
     
+    <!------------- BOTONES ----------------------------------->
     <div id="botones">
         <button id="btn1" type="button">REINICIAR</button>
         <button id="btn2" type="button">LOG OUT</button>
     </div>
 
+    <!------------- LLAMADA SCRIPTS --------------------------->
     <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="../js/scripts_juego.js"></script>
 </body>

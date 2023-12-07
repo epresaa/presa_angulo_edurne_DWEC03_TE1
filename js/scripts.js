@@ -1,15 +1,16 @@
+// Edurne Presa Angulo - DWEC03 TE2 
+
 'use-strict'
 
+// ------------------- JQUERY -------------------------------------
 // Comprobación de la carga de JQuery
 $(document).ready(function() {
         console.log("JQuery cargado");
     }
 );
 
-// ------------------- VARIABLES GLOBALES -------------------------
-// 
-
 // ------------------- CLASES -------------------------------------
+// Clase Usuario
 class Usuario {
     constructor(nombre, apellido, usu, pwd) {
       this.nombre = nombre;
@@ -34,6 +35,7 @@ function cargarUsuariosJSON () {
     fetch(request).then(response => {
     response.json().then(data => {
         console.log('Datos', data);  
+        // Llama a la función que carga usuarios en LocalStorage
         cargarLocalStorage(data);
     })
     })
@@ -47,17 +49,19 @@ function cargarLocalStorage(data) {
         let password = data[i].contraseña;
         let user = new Usuario(fnombre, fapellido, usuario, password);
         
-        // Guarda la informacion en el local storage del nav
+        // Guarda la informacion en el local storage del navegador
         localStorage.setItem('usuario'+i, JSON.stringify(user));
     }      
 }
 
 // Funcion que comprueba el usuario y contraseña introducidos
+//  Es llamada al pulsar el botón del formulario para entrar al juego
 function comprobarLog() {
     let nombre_usu = document.getElementById("usuario").value;
     let pass_usu = document.getElementById("contra").value;
     let acceso_permitido = false; 
 
+    // Busca el usuario y contraseña introducidos entre los del localStorage
     for(let i = 0; i < localStorage.length; i++) {
         let cla = localStorage.key(i);
         let val = localStorage.getItem(cla);
@@ -70,20 +74,22 @@ function comprobarLog() {
 
         if(usu == nombre_usu && pas == pass_usu) {
             acceso_permitido = true;
-            // no sigue el bucle si usu/pwd correctos
+            // No sigue el bucle si usu/pwd correctos
             break;
         }
     }
+
+    // Devuelve true o false para conceder o no el acceso
     if (acceso_permitido && comprobarExp(pass_usu)) {
         return true;
     } else {
-        //alert("que");
         comprobarCaracter(pass_usu);
         return false;
     }
 }
 
-// 
+// Función que usa RegExp para comprobar el formato de la contraseña
+//  Devuelve true si lo cumple y false si no
 function comprobarExp(contrasenia) {
     let regexp = /^[a-zA-Z0-9]+$/;
     if(regexp.test(contrasenia)) {
@@ -93,7 +99,7 @@ function comprobarExp(contrasenia) {
     }
 }
 
-// 
+// Función que busca caracteres no permitidos en la contraseña
 function comprobarCaracter(contrasenia) {
     let caract = "";
     let no_permi = false; 
@@ -108,10 +114,10 @@ function comprobarCaracter(contrasenia) {
     }
     
     if(no_permi) {
-        // Si hay caracteres: dice cuales son
+        // Si hay alguno: muestra cuales son
         alert("Caracteres no permitido(s): " + caract);
     } else {
-        // Si no: usu/pwd no encontrados 
+        // Si no: muestra mensaje usu/pwd no encontrados 
         document.getElementById("hide").style.display = "block";
     }
 }
@@ -120,5 +126,3 @@ function comprobarCaracter(contrasenia) {
 // ------------------- MAIN ---------------------------------------
 // Se carga el array de usuarios
 cargarUsuariosJSON();
-
-

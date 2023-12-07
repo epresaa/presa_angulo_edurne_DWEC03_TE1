@@ -1,3 +1,5 @@
+<!-- Edurne Presa Angulo - DWEC03 TE2 -->
+
 <!DOCTYPE html>
 <html lang="es">
     
@@ -7,13 +9,13 @@
     <title>Acceso al juego - El juego del ahorcado</title>
     <!------------- ESTILOS ---------------------------------->
     <link rel="stylesheet" href="css/estilos.css">
-    <!------------- LLAMADA SCRIPTS -------------------------->
-    
 </head>
 
 <body>
     <h1>EL JUEGO DEL AHORCADO</h1> <!-- method="get" action="html/juego.html"-->
-    <form id ="formulario_acceso" method="get" action="html/juego.html" onsubmit="return comprobarLog()">
+    
+    <!------------- FORMULARIO DE ACCESO --------------------->
+        <form id ="formulario_acceso" method="get" action="html/juego.html" onsubmit="return comprobarLog()">
         <h2>Log in</h2>
         <label for="usuario" class="label_acceso">Nombre de usuario</label><br>
         <input type="text" id="usuario" name="usuario" class="input_acceso" required><br>
@@ -23,6 +25,7 @@
         <button id="boton_acceso" type="submit">ENVIAR</button><br>
     </form>
 
+    <!------------- LLAMADA SCRIPTS -------------------------->
     <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
 </body>
